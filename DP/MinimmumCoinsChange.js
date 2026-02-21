@@ -10,7 +10,7 @@ function minimumCoins(coins,amount){
         }
     }
     if(dp[amount]===Infinity) return -1
-    return dp
+    return dp[amount]
 }
 
 console.log(minimumCoins([1,2,5],11))
