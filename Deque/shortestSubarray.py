@@ -4,19 +4,19 @@
 
 from collections import deque
 def shortestSubarray(nums,target):
-  d=deque()
-  prefix_sum=0
-  result=float('inf')
+  p=[0]*(len(nums)+1)
   for i in range(len(nums)):
-    prefix_sum+=nums[i]
-    d.append(prefix_sum)
-    if abs(prefix_sum) >= abs(target):
-      while(abs(prefix_sum)-d[0]>abs(target)):
-        d.popleft()
-        print(prefix_sum)
-      result=min(result,len(d))
-  if result == float('inf'):
-    return -1
-  return result
+    p[i+1]=p[i]+nums[i]
+  d=deque()
+  ans=len(nums)+1
+  for i in range(len(p)):
+    while d and p[i]-p[d[0]]>=target:
+      ans = min(ans,i-d[0])
+      d.popleft()
+    while d and p[i]<=p[d[-1]]:
+      d.pop()
+    d.append(i)
+  return ans if ans<=target else -1
 
-shortestSubarray([5],4)
+print(shortestSubarray([84,-37,32,40,95],167)) #O/P -> 3
+
