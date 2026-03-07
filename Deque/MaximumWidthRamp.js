@@ -11,7 +11,7 @@ function maximumRamp(nums){
         }
     }
     for(let i=0;i<nums.length;i++){
-        while(deque.length && nums[i]<=deque[0]){
+        while(deque.length && nums[i]<=nums[deque[0]]){
             max_ramp=Math.max(max_ramp,deque[0]-i)
             deque.shift();
         }
