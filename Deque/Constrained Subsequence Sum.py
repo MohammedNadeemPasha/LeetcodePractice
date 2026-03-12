@@ -1,3 +1,4 @@
+#  Intuition - Have to solve this using dp and not greedy approach
 from collections import deque
 import copy
 from typing import List
