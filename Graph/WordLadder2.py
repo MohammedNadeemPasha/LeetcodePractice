@@ -13,8 +13,8 @@
 #   ["hit","hot","dot","dog","cog"],
 #   ["hit","hot","lot","log","cog"]]
 #
-# hit -> hot -> dot -> dog -> cog
-#       |
+# hit -> hot -> dot -> dog -> cog               =================USE BFS TO FIND THE NODES THAT LEAD TO TARGET =================        
+#       |                                       =================THEN USE DFS FROM TARGET TO SOURCE TO TRACE THE PATH=================
 #       -> lot -> log -> cog
 
 from collections import defaultdict, deque
