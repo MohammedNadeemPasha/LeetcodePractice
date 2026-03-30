@@ -1,49 +1,41 @@
-from collections import defaultdict,deque
+# Given n courses labeled from 1 to n, along with a list of prerequisite relations and an array time,
+# return the minimum number of months required to complete all courses.
+# Each relation [a, b] means course a must be completed before course b.
+# time[i] represents the number of months required to complete course (i+1).
+# You can:
+# - Start a course anytime after completing its prerequisites.
+# - Take multiple courses simultaneously.
+#
+# The input guarantees that all courses can be completed (i.e., no cycles).
+#
+# ex:- n = 3, relations = [[1,3],[2,3]], time = [3,2,5] ; O/P -> 8
+from collections import defaultdict, deque
+
 
 def minimumTime(n, relations, time) :
-    indegree={x:0 for x in range(1,n+1)}
-    totalTime=[0]*(n);min_result=0
-    reverse_graph=defaultdict(set)
-    graph=defaultdict(set)
-    for courses in relations:
-        [prevCourse,nextCourse] = courses
-        indegree[nextCourse]+=1
-        totalTime[nextCourse-1]+=time[prevCourse-1]
-        reverse_graph[prevCourse].add(nextCourse)
-        graph[nextCourse].add(prevCourse)
-    q = deque([x for x in indegree if indegree[x] == 0])
-    print(q)
-    for x in range(1,n+1):
-        totalTime[x-1]+=time[x-1]
-    while len(q):
-        minimum=float('inf')
-        count=0
-        minimum_nodes=[]
-        for x in q:
-            print(totalTime)
-            if totalTime[x]==minimum:
-                minimum_nodes.append(x)
-            if totalTime[x]<minimum:
-                minimum_nodes=[x]
-                minimum=totalTime[x]
-        min_result+=minimum
-        print(minimum_nodes)
-        for nodes in minimum_nodes:
-            for neighbours in reverse_graph[nodes]:
-                totalTime[neighbours-1]-=minimum
-                if totalTime[neighbours-1]== 0:
-                    if len(reverse_graph[nodes]):
-                        reverse_graph[nodes].remove(neighbours)
-                    q.append(neighbours)
-                    count+=1
-        new_q = deque()
-        for i in range(len(q) - count):
-            totalTime[q[i]] -= minimum
-            if totalTime[q[i]] != 0:
-                new_q.append(q[i])
-        for i in range(len(q) - count, len(q)):
-            new_q.append(q[i])
-        q = new_q
-    return min_result
-            
-            
+    graph = defaultdict(list)
+    indegree = [0] * (n + 1)
+
+    for u, v in relations:
+        graph[u].append(v)
+        indegree[v] += 1
+
+    dp = [0] * (n + 1)
+    q = deque()
+
+    for i in range(1, n + 1):
+        if indegree[i] == 0:
+            dp[i] = time[i - 1]
+            q.append(i)
+
+    while q:
+        u = q.popleft()
+        for v in graph[u]:
+            dp[v] = max(dp[v], dp[u] + time[v - 1])
+            indegree[v] -= 1
+            if indegree[v] == 0:
+                q.append(v)
+
+    return max(dp)
+
+print(minimumTime(3,[[1,3],[2,3]],[3,2,5])) #O/P -> 8
