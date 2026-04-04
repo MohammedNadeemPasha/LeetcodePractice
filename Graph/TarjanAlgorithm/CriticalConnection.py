@@ -1,24 +1,28 @@
+from collections import defaultdict
+def criticalConnections(n, connections):
+    low=[-1]*n
+    disc=[-1]*n
+    graph=defaultdict(list)
+    result=[]
+    for i in range(len(connections)):
+        a,b=connections[i]
+        graph[a].append(b)
+        graph[b].append(a)
+    def dfs(parent,node,time):
+        disc[node]=time[0]
+        low[node]=time[0]
+        time[0]+=1
+        for nei in graph[node]:
+            if nei == parent:
+                continue
+            if disc[nei] == -1:
+                dfs(node,nei,time)
+                low[node]=min(low[node],low[nei])
+                if low[nei]>disc[node]:
+                    result.append([node,nei])
+            else:
+                low[node]=min(low[node],disc[nei]) 
+    dfs(-1,0,[0])
+    return result      
 
-
-class Solution:
-    def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
-        indegree=[0]*n
-        graph=defaultdict(set)
-        result=[]
-        for i in range(len(connections)):
-            a,b=connections[i]
-            indegree[a]+=1
-            indegree[b]+=1
-            graph[a].add(b)
-            graph[b].add(a)
-        q=deque()
-        for i in range(len(indegree)):
-            if indegree[i] == 1:
-                q.append(i)
-        while len(q):
-            node= q.popleft()
-            for i in graph[node]:
-                graph[i].remove(node)
-                indegree[i]-=1
-                result.append([node,i])
-        return result
+print(criticalConnections(4,[[0,1],[1,2],[2,0],[1,3]])) # O/P -> [1,3]
