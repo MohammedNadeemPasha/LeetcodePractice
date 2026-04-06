@@ -4,7 +4,7 @@
 # If there is no such route, return -1.
 # ex:- n = 4, flights = [[0,1,100],[1,2,100],[2,0,100],[1,3,600],[2,3,200]], src = 0, dst = 3, k = 1
 # O/P -> 700
-
+                #==========catch, we need a 2d array storing best dist for each stops and not just 1 best dist for all stops========
 import heapq                                               #  [ [inf, inf, inf, ...],
 from collections import defaultdict                        #  [inf, inf, inf, ...],
 from typing import List                                    #     ...]
