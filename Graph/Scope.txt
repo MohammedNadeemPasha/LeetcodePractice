@@ -1,0 +1,70 @@
+🔑 1. Traversal (BFS / DFS fundamentals)        🔑 2. Topological Sort (DAG problems)
+These are the backbone of almost everything.    Very common in Google interviews.
+
+- Number of Islands                             - Course Schedule I & II
+  → Grid → DFS/BFS flood fill                    → Cycle detection + topo sort
+- Clone Graph                                   - Alien Dictionary ⭐ (VERY important)
+  → Graph traversal + hashmap                    → Build graph from strings + topo sort
+- Flood Fill                                    - Minimum Height Trees
+- Max Area of Island                            - Find Eventual Safe States
+- Surrounded Regions
+
+
+🔑 3. Cycle Detection                           🔑 4. Shortest Path Algorithms
+Asked directly or hidden inside problems.       (VERY high priority)
+
+- Detect Cycle in Directed Graph                Unweighted Graph
+- Detect Cycle in Undirected Graph              - Shortest Path in Binary Matrix
+  (Union-Find / DFS)                            - Word Ladder ⭐
+- Redundant Connection                          - Rotting Oranges
+- Redundant Connection II ⭐
+
+👉 Focus:                                        👉 BFS is key here.
+- DFS states (0,1,2)
+- Union-Find basics                             Weighted Graph
+                                                - Network Delay Time → Dijkstra
+                                                - Cheapest Flights Within K Stops ⭐
+                                                - Path With Minimum Effort
+
+                                                👉 Focus:
+                                                - Dijkstra (priority queue)
+                                                - When NOT to use BFS
+
+
+🔑 5. Union-Find (Disjoint Set)                 🔑 6. Minimum Spanning Tree (MST)
+(Google LOVES this in disguised problems)       (Less frequent but still important)
+
+- Number of Connected Components                - Min Cost to Connect All Points ⭐
+- Accounts Merge ⭐                              - Connecting Cities With Minimum Cost
+- Redundant Connection
+- Satisfiability of Equality Equations          👉 Focus:
+                                                - Kruskal (Union-Find)
+                                                - Prim (heap)
+
+
+🔑 7. Multi-source BFS / Advanced BFS           🔑 8. Graph + Backtracking / DFS combos
+                                                (Harder tier)
+
+- Walls and Gates ⭐                             - Word Search II ⭐
+- 01 Matrix                                     - Reconstruct Itinerary ⭐
+- Rotting Oranges                               - All Paths From Source to Target
+
+👉 Pattern:                                      👉 Focus:
+- push multiple sources into queue initially    - DFS + pruning
+                                                - Trie (for Word Search II)
+
+
+🔑 9. Strongly Connected Components             🔑 10. Graph Modeling
+(rare but powerful)                             (MOST IMPORTANT SKILL)
+(Sometimes appears in harder interviews)        (Google often tests how you model
+                                                the graph, not just solve it)
+
+- Kosaraju / Tarjan (know conceptually)         Examples:
+                                                - Evaluate Division
+                                                - Sentence Similarity II
+                                                - Open the Lock ⭐
+                                                - Bus Routes
+
+                                                👉 Focus:
+                                                - Turning real-world constraints
+                                                  → graph nodes/edges
