@@ -21,6 +21,13 @@
 # - Add one extra virtual top node to represent all stable bricks.
 # - Any brick in the top row is connected to this top node.
 
+# DSU is good at merging components, not splitting them.
+# In the forward direction, each hit is a deletion:
+# - removing one brick can break one connected component into multiple pieces
+# - some pieces remain stable, some become floating
+# - to know that, we would need to re run dsu on entire graph
+# DSU cannot efficiently undo unions or split a set apart.
+
 def hitBricks( grid, hits) :
     m, n = len(grid), len(grid[0])
     roof = m * n
