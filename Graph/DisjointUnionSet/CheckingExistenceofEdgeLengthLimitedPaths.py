@@ -1,3 +1,22 @@
+# Problem:- we are given:
+# - an undirected graph with n nodes
+# - edgeList[i] = [u, v, dist] means an edge between u and v with weight dist
+# - queries[j] = [p, q, limit] asks whether p and q are connected
+#   using only edges with weight strictly less than limit
+#
+# Return a boolean array where answer[j] is True if such a path exists, otherwise False.
+# ex:-
+# n = 3, edgeList = [[0,1,2],[1,2,4],[0,2,8],[1,0,16]], queries = [[0,1,2],[0,2,5]]
+# O/P -> [False, True]
+#
+# Idea:
+# - Use offline sorting + Union-Find.
+# - Sort all edges by weight.
+# - Sort queries by limit, while keeping their original index.
+# - For each query [p, q, limit]:
+#   - union all edges with weight < limit
+#   - then check whether p and q belong to the same component
+# - Store the result at the query’s original index.
 
 def distanceLimitedPathsExist(n, edgeList, queries):
     parent=list(range(n))
