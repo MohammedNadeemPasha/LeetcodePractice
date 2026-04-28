@@ -1,3 +1,27 @@
+# You are given two sentences words1 and words2, and a list of similar word pairs.
+# Return True if both sentences are similar, otherwise False.
+#
+# Similarity rules:
+# - A word is always similar to itself.
+# - Similarity is symmetric.
+# - Similarity is transitive.
+# - Sentences must have the same length.
+#
+# ex:
+# words1 = ["great", "acting", "skills"]
+# words2 = ["fine", "drama", "talent"]
+# pairs = [["great","good"],["fine","good"],["acting","drama"],["skills","talent"]]
+# O/P -> True
+#
+# Idea:
+# - Use Union-Find to group similar words.
+# - For each pair [a, b], union a and b.
+# - If words1 and words2 have different lengths, return False.
+# - For each index i:
+#   - If words1[i] == words2[i], continue.
+#   - Otherwise, check if both words have the same root.
+#   - If not, return False.
+# - Return True.
 from collections import defaultdict
 def sentenceSimilarity(word1,word2,pairs):
     if len(word1) != len(word2):
