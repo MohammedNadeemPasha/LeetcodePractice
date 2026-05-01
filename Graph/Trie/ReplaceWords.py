@@ -16,16 +16,16 @@
 #   - If no root is found, keep the original word.
 # - Join all processed words back into a sentence.
 #========= My Solution=========
-class Solution:
-    def replaceWords(self, dictionary: list[str], sentence: str) -> str:
-        roots = set(dictionary)
-        result = []
-        for word in sentence.split():
-            replacement = word
-            for i in range(1, len(word) + 1):
-                prefix = word[:i]
-                if prefix in roots:
-                    replacement = prefix
-                    break
-            result.append(replacement)
-        return " ".join(result)
+def replaceWords( dictionary, sentence) :
+    roots = set(dictionary)
+    result = []
+    for word in sentence.split():
+        replacement = word
+        for i in range(1, len(word) + 1):
+            prefix = word[:i]
+            if prefix in roots:
+                replacement = prefix
+                break
+        result.append(replacement)
+    return " ".join(result)
+print(replaceWords(["cat","bat","rat"],"the cattle was rattled by the battery")) #O/P->the cat was rat by the bat
