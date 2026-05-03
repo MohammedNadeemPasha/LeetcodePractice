@@ -1,0 +1,35 @@
+
+Don’t think of memo as something that helps immediately at the start.
+
+In DFS, we go deep first until a smaller subproblem is fully solved. Then we save that answer in memo.
+
+Essentially Top Down Approach with saving already computed values
+
+Later, when another DFS branch reaches the same subproblem, we don’t solve it again — we reuse the saved answer.
+
+So memo usually feels like it works “from the end backward”:
+solve the deeper remaining part first, cache it, then earlier branches can reuse it.
+
+The question to ask is:
+
+“Can two different paths reach the same remaining problem?” If yes, use memo.
+
+For ex:- (Word Break problem)
+s = "catsanddog"
+wordDict = ["cat", "cats", "and", "sand", "dog"]
+
+Two Paths: cat  + sand + dog, cats + and  + dog
+
+Both eventually need to solve: dfs(7) i.e, s[7:] == "dog"
+So once DFS computes: memo[7] = ["dog"];  both paths can reuse it.
+
+another ex:- (ConcatenatedWords problem)
+words = ["a", "aa", "aaa"]
+word = "aaaa"
+
+Two paths:
+a  | a  | aa
+aa | aa
+
+Both reach: dfs(2, root, True) -> 'aa' first two characters
+so once computed other paths can use it
