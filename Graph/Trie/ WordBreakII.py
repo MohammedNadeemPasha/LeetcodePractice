@@ -40,31 +40,24 @@ def wordBreak( s, wordDict) :
     recursive(0,s,result,'','',seen_words)
     return result
 #================DP Based SOlution ===================
-class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
-        words = set(wordDict)
-        memo = {}
 
-        def dfs(i):
-            if i in memo:
-                return memo[i]
-
-            if i == len(s):
-                return [""]
-
-            res = []
-
-            for word in words:
-                if s.startswith(word, i):
-                    suffixes = dfs(i + len(word))
-
-                    for suffix in suffixes:
-                        if suffix:
-                            res.append(word + " " + suffix)
-                        else:
-                            res.append(word)
-
-            memo[i] = res
-            return res
-
-        return dfs(0)
+def wordBreak(s, wordDict):
+    words = set(wordDict)
+    memo = {}
+    def dfs(i):
+        if i in memo:
+            return memo[i]
+        if i == len(s):
+            return [""]
+        res = []
+        for word in words:
+            if s.startswith(word, i):
+                suffixes = dfs(i + len(word))
+                for suffix in suffixes:
+                    if suffix:
+                        res.append(word + " " + suffix)
+                    else:
+                        res.append(word)
+        memo[i] = res
+        return res
+    return dfs(0)
