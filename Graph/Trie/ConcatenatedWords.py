@@ -14,10 +14,31 @@
 # - Use DFS or DP to try every prefix.
 # - If a prefix exists in the set, recursively check the remaining suffix.
 # - If the word can be split into at least two valid words, add it to result.
+#===========MY Solution(Uses Only recursion and exceeds time limit for 42th test case/43)===============
+def wordBreak( s, wordDict):
+    result = []
+    seen_words = set(wordDict)
 
+    def recursive(i, s, result, acc_string, curr_string, seen_words):
+        if curr_string in seen_words:
+            if i == len(s):
+                acc_string += curr_string
+                words = acc_string.split(" ")
+                for word in words:
+                    if word not in seen_words:
+                        return
+                result.append(acc_string)
+                return
 
+            if i < len(s):
+                recursive(i + 1, s, result, acc_string + curr_string + ' ', '' + s[i], seen_words)
+                recursive(i + 1, s, result, acc_string, curr_string + s[i], seen_words)
+        else:
+            if i < len(s):
+                recursive(i + 1, s, result, acc_string, curr_string + s[i], seen_words)
 
-
+    recursive(0, s, result, '', '', seen_words)
+    return result
 
 #============== Optimal Solution using DP ===================
 def findAllConcatenatedWordsInADict(words):
