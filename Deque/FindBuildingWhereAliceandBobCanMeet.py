@@ -59,7 +59,7 @@ def leftmostBuildingQueries(heights, queries) :
     return result
 
 
-#=============== My Solution (Memory Limit Exceeded) (Stores all the valid buildings to the right from this building in a new array ) =====================
+#=============== My Solution (Memory Limit Exceeded) (Stores all the valid buildings to the right from current building in a new array (worst case O(n^2)) ) =====================
 def leftmostBuildingQueries(heights, queries):
     n = len(heights)
     max_heights = [[] for _ in range(n)]
