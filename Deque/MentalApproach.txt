@@ -1,0 +1,23 @@
+How to determine whether a monotonic deque/stack could help solve the problem?
+
+    USE YOUR BRAIN;     DO NOT TRY TO FORCE A CONCEPT;    TRYING TO SOLVE THE PROBLEM WILL HINT YOU TOWARDS THE RIGHT CONCEPT 
+(FindBuildingWhereAliceandBobCanMeet.py)
+
+BELOW ARE A FEW HELPFUL RECURRING PATTERNS I’VE ENCOUNTERED WHILE SOLVING MONOTONIC TYPE PROBLEMS
+
+-> While solving the problem we encounter a scenario where we have a subarray and a subproblem requires us to consistently perform an 
+   operation on the least or highest value in the subarray, usually multiple times to maintain an order 
+ ex:- SubarrayWithElementsGreaterThanVaryingThreshold.py
+
+-> Most evident clue, we need to maintain an order of highest or lowest values in order 
+ ex:- MaximuminASlidingWindow.js; we need to find maximum in a window but finding max is a O(n) operation, 
+      maintaining monotonic order of decreasing elements makes it a O(1) operation
+
+-> A 132 pattern sub problem where difference in values (heights) are the main focus of the problem and we need to add/remove elements
+   based on this relationship
+
+one of the most common mental roadblocks encountered while formulating solution using monotonic stack 
+while adding elements in a stack -
+The new element added requires us to remove the previous element but there could be future elements 
+for ex in a decreasing monotonic stack; we need the maximum width ramp; so we need the higher values than current values 
+ex 6,0 now we first intinct is to remove 6 since monotonic decreasing hence 
