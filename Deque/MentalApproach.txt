@@ -16,8 +16,20 @@ BELOW ARE A FEW HELPFUL RECURRING PATTERNS I’VE ENCOUNTERED WHILE SOLVING MONO
 -> A 132 pattern sub problem where difference in values (heights) are the main focus of the problem and we need to add/remove elements
    based on this relationship
 
+-> Adding or removing element from the stack/queue also gives us information which need to be used to solve few problems
+ ex:- LargestRectangleinHistogram.py, we need to find the max rectangle area, now consider the scenario
+  4,6,7,5; 4,6,7 forms a block; while adding increasing elements we can calculate max area; ex 4,5 -> max(5,max_area) 
+  now, when we encounter a value less than the top of the stack value we need to remove it 
+  while removing elements the range of index from current value and the removed element value helps us in finding the max area
+  |current value index - popped values index|, essentially moving backwards
+
+-> Similarly, while adding element to the que, few problems requires us to store some form of information
+ ex:- ApplyOperationstoMaximizeScore.py; 
+  A subproblem in this requires us to find the range where A number has the highest prime factor property within the subarray
+  Range requries us to find the start and end value, the start value is determined while adding the element and end while popping it
+
 one of the most common mental roadblocks encountered while formulating solution using monotonic stack 
 while adding elements in a stack -
-The new element added requires us to remove the previous element but there could be future elements 
+The new element added requires us to remove the previous element but there could be future elements could give the result and since we've just removed it they won't be considered
 for ex in a decreasing monotonic stack; we need the maximum width ramp; so we need the higher values than current values 
 ex 6,0 now we first intinct is to remove 6 since monotonic decreasing hence 
