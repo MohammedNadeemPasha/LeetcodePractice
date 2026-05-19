@@ -28,14 +28,18 @@ BELOW ARE A FEW HELPFUL RECURRING PATTERNS I’VE ENCOUNTERED WHILE SOLVING MONO
   A subproblem requires us to find the range for each element where it has the highest prime factor property within the subarray
   Range requries us to find the start and end value, the start value is determined while adding the element and end while popping it
 
-2) -> If we encounter a situation where we have a monotonic decreasing stack and the new higher value requires to remove the first element
-  but we need to consider all future higher values as well to 
+2) -> If we encounter a situation where we have a monotonic decreasing stack and the new higher value replaces the first element
+  but we need to consider all future higher values as well to calculate the result; This is a clear sign to approach the question
+  in reverse direction i.e, right to left using a monotonic decreasing stack.
 
-one of the most common mental roadblocks encountered while formulating solution using monotonic stack 
-while adding elements in a stack -
-The new element added requires us to remove the previous element but there could be future elements could give the result and since we've just removed it they won't be considered
-for ex in a decreasing monotonic stack; we need the maximum width ramp; so we need the higher values than current values 
-ex 6,0 now we first intinct is to remove 6 since monotonic decreasing hence 
+one of the most common mental roadblocks encountered while formulating solution using monotonic stack is
+while adding elements in a stack - 
+The new element added requires us to remove the previous element but there could be future elements that could be the ans and since 
+we've just removed it they won't be considered for ex in a decreasing monotonic stack; we need the maximum width ramp; so we need 
+the higher values than current values 
+ex 6,0 now next element is 7 which is a valid ramp but future values could be 8,9; which could result in better widths. 
+In this case consider flipping the direction of approach i.e, from left -> right to right -> left.
+it becomes 9,8,7,0,6 -> 9,8,7,6: 9 -6
 
 TLDR :-
 1) 132 type problem, highest or lowest value needed -> this part doesn't easily jump out; would have to think deep for a bit
