@@ -40,7 +40,8 @@ ex 6,0 now we first intinct is to remove 6 since monotonic decreasing hence
 TLDR :-
 1) 132 type problem, highest or lowest value needed -> this part doesn't easily jump out; would have to think deep for a bit
 2) Be mindful while adding and removing elements
-3) While removing element, try expanding from back, sometime helps to formate the solution
+3) While removing element, try expanding from back, helps in formulating the solution
 4) Decreasing values but future higher values also needed? Try iterating backwards and storing decreasing values
    ex:- 6,4,2,7,8,9 -> for 6 we need -> 7,8,9 but only get 7 if decreasing value left to right;
         try right to left decreasing values -> 9,8,7,6 -> now 6 -> [9,8,7]
+        ex problems:- FindBuildingWhereAliceandBobCanMeet.py, NumberofVisiblePeopleinaQueue.py, 
