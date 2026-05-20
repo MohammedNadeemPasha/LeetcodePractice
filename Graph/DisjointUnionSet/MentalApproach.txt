@@ -1,0 +1,25 @@
+How to confirm whether DSU could help solve this problem?
+
+-> While formulating the solution and going through a test case, a steps invloves some form of grouping and there's some form of 
+  interaction between these formed groups which leads us to the solution
+
+Few problems do not intuitively jump out as a graph problem but try looking at the inputs as nodes, this helps confirm it and look 
+  at problem from different prespective
+
+BELOW ARE A FEW HELPFUL RECURRING PATTERNS I’VE ENCOUNTERED WHILE SOLVING DSU TYPE PROBLEMS
+
+-> DSU is good at merging components, not splitting them, ex:- query type questions FallingBricks.py
+  Looking at face vlaue we'd have to break groups which is what DSU is not good at, however looking at the problem
+  in backwards direction i.e, back to front; first remove the target bricks, form the groups and then add back the bricks to know which
+  ones get removed
+
+-> If the question includes a weight/dist component and we have to find a solution with minimal weight or not going above a threshold
+  (Is usually Worded differently but concept is 'solution has something to do with a max or min value') 
+  ex:- CheckingExistenceofEdgeLengthLimitedPaths.py, FindCriticalandPseudo-CriticalEdgesinMinimumSpanningTree.py
+  Sorting helps in such cases and its worth a try to sort multiple values asked in question to see if it helps in solving
+  not just dsu type questions but in general
+  Sometimes sorting the inputs helps as well, ex CheckingExistenceofEdgeLengthLimitedPaths.py, where we sort the inputs to choose
+  only those inputs below threshold for sorted valued queries first so that future values are guarenteed to be lower than previous ones
+  Sorting and then applying dsu solves a part of the problem, this result can then be carried forward and used as a base to solve 
+  rest of th problem
+
